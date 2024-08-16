@@ -56,14 +56,15 @@ def dlc_video_page():
             url = "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp"
             if os.path.exists(yt_dlp_path):
                 os.remove(yt_dlp_path)
-            time.sleep(1)
+            time.sleep(2)
             urlData = requests.get(url).content
             with open(yt_dlp_path , mode='wb') as f:
                 f.write(urlData)
-            time.sleep(1)
+            time.sleep(2)
             
             # yt-dlpを実行
             subprocess.run(["chmod" , "+x" , yt_dlp_path])
+            time.sleep(2)
             subprocess.run([yt_dlp_path , "-o" , video_file_path , video_url])
             
             video_file_path_list.append(video_file_path)
