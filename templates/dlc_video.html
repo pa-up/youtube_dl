@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>動画をダウンロード</h1>
+    <h3>動画のURLを入力</h3>
+    <p>複数の動画を文字起こしする場合は、URLを1つずつ改行して入力</p>
+    <form action="/" method="POST">
+        <textarea type="text" name="video_url" class="textArea"></textarea>
+        <p></p>
+        <button type="submit" class="btn">送信</button>
+    </form>
+
+    <p><br></p>
+    
+    {% if video_file_path_list != [] %}
+        <h3>動画を一括ダウンロード</h3>
+        <div class="button019">
+            <a href="{{ url_for('all_download') }}">一括ダウンロード</a>
+        </div>
+
+        <p><br></p>
+
+        <h3>動画を選択してダウンロード</h3>
+        <select id="aBtnSelector">
+            <option value=""></option>
+            {% for video_url in video_url_list %}
+                <option value="{{ loop.index0 }}">this url: {{ video_url_list[:10] }}</option>
+            {% endfor %}
+        </select>
+
+        <p style="margin-bottom: 30px;"></p>
+
+        <div class="button019">
+            <div id="downloadLink"></div>
+        </div>
+
+        <script>
+            var btnSelect = document.getElementById('aBtnSelector');
+            var downloadLink = document.getElementById('downloadLink');
+            btnSelect.addEventListener('change', (event) => {
+                var idValue = btnSelect.options[btnSelect.selectedIndex].value;
+                var url = '{{ url_for("download", id="TEMPIDVALUE") }}';
+                url = url.replace('TEMPIDVALUE', idValue);
+                downloadLink.innerHTML = '<a href="' + url + '">選択してダウンロード</a>';
+
+            });
+        </script>
+
+    {% endif %}
+
+{% endblock %}
