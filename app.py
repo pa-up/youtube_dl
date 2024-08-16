@@ -95,9 +95,8 @@ def csv_download():
 
 @app.route('/download/<id>')
 def download(id):
-    directory = os.path.join(app.root_path, 'files')
     video_file_path = ouput_video_folder + str(id) + ".mp4"
-    return send_file(os.path.join(directory, video_file_path), as_attachment=True)
+    return send_file(video_file_path, as_attachment=True)
 
 @app.route('/all_download')
 def all_download():
