@@ -63,7 +63,7 @@ def dlc_video_page():
             time.sleep(1)
             
             # yt-dlpを実行
-            subprocess.run(["chmod" , "+x , yt_dlp_path])
+            subprocess.run(["chmod" , "+x" , yt_dlp_path])
             subprocess.run([yt_dlp_path , "-o" , video_file_path , video_url])
             
             video_file_path_list.append(video_file_path)
