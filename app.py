@@ -31,7 +31,7 @@ input_audio_folder = media_path + "in_audio/"
 ouput_audio_folder = media_path + "audio/" 
 ouput_video_folder = media_path + "video/"
 ffmpeg_path = media_path + "/tool/ffmpeg_win"
-yt_dlp_path = media_path + "/tool/yt-dlp.exe"
+yt_dlp_path = media_path + "/tool/yt-dlp"
 input_video_folder = media_path + "in_video/"
 input_video_path = input_video_folder + "input.mp4"
 output_csv_path_from_static = "/csv/scraping.csv"
@@ -53,7 +53,7 @@ def dlc_video_page():
             video_file_path = ouput_video_folder + str(index) + ".mp4"
 
             # Web上からyt-dlpをダウンロードしなおす
-            url = "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe"
+            url = "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp"
             if os.path.exists(yt_dlp_path):
                 os.remove(yt_dlp_path)
             time.sleep(1)
@@ -109,7 +109,7 @@ def all_download():
 
 
 """
-https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe
+https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
 """
 
 if __name__ == "__main__":
